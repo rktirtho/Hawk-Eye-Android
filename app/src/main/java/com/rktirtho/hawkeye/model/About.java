@@ -6,7 +6,15 @@ public class About {
     private String roll;
     private String regNo;
 
-    
+    public About() {
+    }
+
+    public About(String name, String title, String roll, String regNo) {
+        this.name = name;
+        this.title = title;
+        this.roll = roll;
+        this.regNo = regNo;
+    }
 
     public String getName() {
         return name;
