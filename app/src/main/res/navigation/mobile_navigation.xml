@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.rktirtho.hawkeye.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_org"
+        android:name="com.rktirtho.hawkeye.ui.organizations.GalleryFragment"
+        android:label="@string/menu_org"
+        tools:layout="@layout/fragment_organizations" />
+
+    <fragment
+        android:id="@+id/nav_employees"
+        android:name="com.rktirtho.hawkeye.ui.employees.SlideshowFragment"
+        android:label="@string/menu_employees"
+        tools:layout="@layout/fragment_employees" />
+    <fragment
+        android:id="@+id/nav_unknow_person"
+        android:name="com.rktirtho.hawkeye.ui.unknowperson.UnknownPersonFragment"
+        android:label="@string/menu_unknown_person"
+        tools:layout="@layout/fragment_unknow_person" />
+    <fragment
+        android:id="@+id/nav_about"
+        android:name="com.rktirtho.hawkeye.ui.about.AboutFragment"
+        android:label="@string/menu_about"
+        tools:layout="@layout/fragment_about" />
+</navigation>
