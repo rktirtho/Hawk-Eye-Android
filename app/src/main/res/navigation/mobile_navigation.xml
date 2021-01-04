@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/nav_employees"
-        android:name="com.rktirtho.hawkeye.ui.employees.SlideshowFragment"
+        android:name="com.rktirtho.hawkeye.ui.employees.EmployeeFragment"
         android:label="@string/menu_employees"
         tools:layout="@layout/fragment_employees" />
     <fragment

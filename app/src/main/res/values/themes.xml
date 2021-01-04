@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.HawkEye" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_200</item>
+        <item name="colorPrimary">#302727</item>
+        <item name="colorPrimaryVariant">#221D1D</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -25,6 +25,7 @@
 
     <style name="Theme.Default" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="colorPrimary">@color/default_nav</item>
+        <item name="colorSecondary">@color/teal_200</item>
     </style>
 
 </resources>

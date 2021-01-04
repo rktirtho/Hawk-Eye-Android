@@ -1,6 +1,7 @@
 package com.rktirtho.hawkeye.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,15 +62,17 @@ public class EmployeesAdapter extends ArrayAdapter<Employees> {
 
 
         Glide.with(context)
-                .load(RetrofitClient.BASE_URL+"images"+employee.getImageId()+".jpg")
+                .load(RetrofitClient.BASE_URL+"images/"+employee.getImageId()+".jpg")
                 .placeholder(R.drawable.logo)
                 .error(R.drawable.logo)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(image);
 
+        Log.e("[ Images ]", RetrofitClient.BASE_URL+"/images"+employee.getImageId()+".jpg");
+
         name.setText(employee.getName());
-        id.setText(employee.getId());
-        office.setText(employee.getOrgId());
+        id.setText("Employee Id"+employee.getId());
+        office.setText(""+employee.getOrgId());
 
         return view;
     }
