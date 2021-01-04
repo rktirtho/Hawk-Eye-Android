@@ -1,5 +1,6 @@
 package com.rktirtho.hawkeye.client;
 
+import com.rktirtho.hawkeye.service.EmployeeService;
 import com.rktirtho.hawkeye.service.OrganizationService;
 
 import retrofit2.Retrofit;
@@ -25,7 +26,15 @@ public class RetrofitClient {
         return retrofitClient;
     }
 
+
+//    ================================== Organization Client======================
     public OrganizationService getOrganizatonService(){
         return retrofit.create(OrganizationService.class);
+    }
+
+
+//    ==================================Employee Client ==========================
+    public EmployeeService getEmployeeService(){
+        return retrofit.create(EmployeeService.class);
     }
 }
