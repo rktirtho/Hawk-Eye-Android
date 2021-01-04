@@ -46,7 +46,7 @@ public class OrganizationAdapter extends ArrayAdapter<Organization> {
         View view = layoutInflater.inflate(resource, null, false);
 
         //getting the view elements of the list from the view
-        TextView name = view.findViewById(R.id.tv_name);
+        TextView name = view.findViewById(R.id.tv_org_name);
         TextView owner = view.findViewById(R.id.tv_owner);
         TextView address = view.findViewById(R.id.tv_address);
         TextView regDate = view.findViewById(R.id.tv_reg_date);
@@ -62,7 +62,9 @@ public class OrganizationAdapter extends ArrayAdapter<Organization> {
 //                .diskCacheStrategy(DiskCacheStrategy.ALL)
 //                .into(image);
 
-        name.setText(organization.getName());
+        if (organization.getName() != null) {
+            name.setText(organization.getName());
+        }
         address.setText(organization.getAddress());
         owner.setText(organization.getWoner());
         regDate.setText(organization.getRegDate());
