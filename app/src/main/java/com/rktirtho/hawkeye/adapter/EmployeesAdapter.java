@@ -1,62 +1,73 @@
 package com.rktirtho.hawkeye.adapter;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
-public class EmployeesAdapter {
-    @SerializedName("id")
-    @Expose
-    private Integer id;
-    @SerializedName("name")
-    @Expose
-    private String name;
-    @SerializedName("orgId")
-    @Expose
-    private Integer orgId;
-    @SerializedName("imageId")
-    @Expose
-    private String imageId;
-    @SerializedName("regesteredTime")
-    @Expose
-    private String regesteredTime;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
-    public Integer getId() {
-        return id;
+import com.rktirtho.hawkeye.R;
+import com.rktirtho.hawkeye.model.Employees;
+import com.rktirtho.hawkeye.model.Organization;
+
+import java.util.List;
+
+public class EmployeesAdapter extends ArrayAdapter<Employees> {
+    List<Employees> employees;
+
+    //activity context
+    Context context;
+
+    //the layout resource file for the list items
+    int resource;
+
+    //constructor initializing the values
+    public EmployeesAdapter(Context context, int resource, List<Employees> employees) {
+        super(context, resource, employees);
+        this.context = context;
+        this.resource = resource;
+        this.employees = employees;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    //this will return the ListView Item as a View
+    @NonNull
+    @Override
+    public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+
+        //we need to get the view of the xml for our list item
+        //And for this we need a layoutinflater
+        LayoutInflater layoutInflater = LayoutInflater.from(context);
+
+        //getting the view
+        View view = layoutInflater.inflate(resource, null, false);
+
+        //getting the view elements of the list from the view
+        TextView name = view.findViewById(R.id.tv_org_name);
+        TextView owner = view.findViewById(R.id.tv_owner);
+        TextView address = view.findViewById(R.id.tv_address);
+        TextView regDate = view.findViewById(R.id.tv_reg_date);
+
+        Employees organization = employees.get(position);
+
+
+
+//        Glide.with(context)
+//                .load("faculaty.getImage()")
+//                .placeholder(R.drawable.prof_placeholder)
+//                .error(R.drawable.prof_placeholder)
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .into(image);
+
+        name.setText(organization.getName());
+        address.setText(organization.getAddress());
+        owner.setText(organization.getWoner());
+        regDate.setText(organization.getRegDate());
+
+        return view;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getOrgId() {
-        return orgId;
-    }
-
-    public void setOrgId(Integer orgId) {
-        this.orgId = orgId;
-    }
-
-    public String getImageId() {
-        return imageId;
-    }
-
-    public void setImageId(String imageId) {
-        this.imageId = imageId;
-    }
-
-    public String getRegesteredTime() {
-        return regesteredTime;
-    }
-
-    public void setRegesteredTime(String regesteredTime) {
-        this.regesteredTime = regesteredTime;
-    }
 }

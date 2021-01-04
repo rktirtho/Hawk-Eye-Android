@@ -54,7 +54,6 @@ public class OrganizationAdapter extends ArrayAdapter<Organization> {
         Organization organization = organizations.get(position);
 
 
-
 //        Glide.with(context)
 //                .load("faculaty.getImage()")
 //                .placeholder(R.drawable.prof_placeholder)
@@ -62,9 +61,9 @@ public class OrganizationAdapter extends ArrayAdapter<Organization> {
 //                .diskCacheStrategy(DiskCacheStrategy.ALL)
 //                .into(image);
 
-        if (organization.getName() != null) {
-            name.setText(organization.getName());
-        }
+
+        name.setText(organization.getName());
+
         address.setText(organization.getAddress());
         owner.setText(organization.getWoner());
         regDate.setText(organization.getRegDate());
