@@ -5,12 +5,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.rktirtho.hawkeye.R;
+import com.rktirtho.hawkeye.client.RetrofitClient;
 import com.rktirtho.hawkeye.model.Employees;
 import com.rktirtho.hawkeye.model.Organization;
 
@@ -46,26 +50,26 @@ public class EmployeesAdapter extends ArrayAdapter<Employees> {
         View view = layoutInflater.inflate(resource, null, false);
 
         //getting the view elements of the list from the view
-        TextView name = view.findViewById(R.id.tv_org_name);
-        TextView owner = view.findViewById(R.id.tv_owner);
-        TextView address = view.findViewById(R.id.tv_address);
-        TextView regDate = view.findViewById(R.id.tv_reg_date);
+        TextView name = view.findViewById(R.id.tv_name);
+        TextView id = view.findViewById(R.id.tv_emp_id);
+        TextView office = view.findViewById(R.id.tv_organization);
 
-        Employees organization = employees.get(position);
+        Employees employee = employees.get(position);
+
+        ImageView image = view.findViewById(R.id.tv_image);
 
 
 
-//        Glide.with(context)
-//                .load("faculaty.getImage()")
-//                .placeholder(R.drawable.prof_placeholder)
-//                .error(R.drawable.prof_placeholder)
-//                .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                .into(image);
+        Glide.with(context)
+                .load(RetrofitClient.BASE_URL+"images"+employee.getImageId()+".jpg")
+                .placeholder(R.drawable.logo)
+                .error(R.drawable.logo)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(image);
 
-        name.setText(organization.getName());
-        address.setText(organization.getAddress());
-        owner.setText(organization.getWoner());
-        regDate.setText(organization.getRegDate());
+        name.setText(employee.getName());
+        id.setText(employee.getId());
+        office.setText(employee.getOrgId());
 
         return view;
     }
