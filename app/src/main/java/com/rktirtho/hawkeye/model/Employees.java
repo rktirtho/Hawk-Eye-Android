@@ -13,6 +13,9 @@ public class Employees {
     @SerializedName("orgId")
     @Expose
     private Integer orgId;
+    @SerializedName("orgName")
+    @Expose
+    private String orgName;
     @SerializedName("imageId")
     @Expose
     private String imageId;
@@ -54,6 +57,14 @@ public class Employees {
 
     public String getRegesteredTime() {
         return regesteredTime;
+    }
+
+    public String getOrgName() {
+        return orgName;
+    }
+
+    public void setOrgName(String orgName) {
+        this.orgName = orgName;
     }
 
     public void setRegesteredTime(String regesteredTime) {

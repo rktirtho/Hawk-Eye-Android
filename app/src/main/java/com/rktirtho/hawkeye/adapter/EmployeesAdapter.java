@@ -71,8 +71,8 @@ public class EmployeesAdapter extends ArrayAdapter<Employees> {
         Log.e("[ Images ]", RetrofitClient.BASE_URL+"/images"+employee.getImageId()+".jpg");
 
         name.setText(employee.getName());
-        id.setText("Employee Id"+employee.getId());
-        office.setText(""+employee.getOrgId());
+        id.setText("ID: "+employee.getId());
+        office.setText(employee.getOrgName());
 
         return view;
     }
