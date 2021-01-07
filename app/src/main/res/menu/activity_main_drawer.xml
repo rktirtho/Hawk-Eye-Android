@@ -11,15 +11,15 @@
             android:title="@string/menu_home" />
         <item
             android:id="@+id/nav_org"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_organization_24"
             android:title="@string/menu_org" />
         <item
             android:id="@+id/nav_employees"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_baseline_people_alt_24"
             android:title="@string/menu_employees" />
         <item
             android:id="@+id/nav_unknow_person"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_unknown_24"
             android:title="@string/menu_unknown_person" />
 
 
@@ -30,20 +30,20 @@
         <menu>
             <item
                 android:id="@+id/nav_auth_access"
-                android:icon="@drawable/ic_menu_camera"
-                android:title="@string/menu_home" />
+                android:icon="@drawable/ic_baseline_authorized_24"
+                android:title="@string/menu_auth" />
             <item
                 android:id="@+id/nav_unauth_access"
-                android:icon="@drawable/ic_menu_gallery"
-                android:title="@string/menu_org" />
+                android:icon="@drawable/ic_un_auth_24"
+                android:title="@string/menu_unAuth" />
             <item
                 android:id="@+id/nav_all_access"
-                android:icon="@drawable/ic_menu_slideshow"
+                android:icon="@drawable/ic_all_access_24"
                 android:title="@string/menu_employees" />
             <item
                 android:id="@+id/nav_unknown_access"
-                android:icon="@drawable/ic_menu_slideshow"
-                android:title="@string/menu_unknown_person" />
+                android:icon="@drawable/ic_strainger_24"
+                android:title="@string/menu_unknown_access" />
 
         </menu>
     </item>
@@ -51,7 +51,7 @@
         <menu>
             <item
                 android:id="@+id/nav_about"
-                android:icon="@drawable/ic_menu_slideshow"
+                android:icon="@drawable/ic_baseline_people_outline_24"
                 android:title="@string/menu_about" />
 
         </menu>

@@ -10,6 +10,9 @@
     <string name="menu_home">Home</string>
     <string name="menu_org">Organization</string>
     <string name="menu_employees">Employees</string>
-    <string name="menu_unknown_person">Unknow Person</string>
-    <string name="menu_about">About</string>
+    <string name="menu_unknown_person">Strangers</string>
+    <string name="menu_about">About Us</string>
+    <string name="menu_auth">Authorized Access</string>
+    <string name="menu_unAuth">Unauthorized Access</string>
+    <string name="menu_unknown_access">UnknownAccess</string>
 </resources>
