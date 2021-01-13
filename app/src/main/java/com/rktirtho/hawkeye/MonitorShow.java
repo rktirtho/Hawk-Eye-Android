@@ -34,9 +34,11 @@ public class MonitorShow extends AppCompatActivity {
         progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDoalog.show();
 
+        int personId = getIntent().getIntExtra("personId",0);
+
         Call<List<MonitoringView>> call = RetrofitClient.getInstance()
                 .getMonitoringService()
-                .getAccessView(4001);
+                .getAccessView(personId);
 
         call.enqueue(new Callback<List<MonitoringView>>() {
             @Override
@@ -46,11 +48,12 @@ public class MonitorShow extends AppCompatActivity {
                     MonitoringViewAdapter adapter = new MonitoringViewAdapter(MonitorShow.this, R.layout.model_access, monitoringViewList);
                     accessList.setAdapter(adapter);
                 }
+                progressDoalog.dismiss();
             }
 
             @Override
             public void onFailure(Call<List<MonitoringView>> call, Throwable t) {
-
+                progressDoalog.dismiss();
             }
         });
 
