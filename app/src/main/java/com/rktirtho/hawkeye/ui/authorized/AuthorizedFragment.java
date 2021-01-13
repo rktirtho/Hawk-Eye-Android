@@ -15,10 +15,17 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.rktirtho.hawkeye.R;
 import com.rktirtho.hawkeye.adapter.AboutAdapter;
+import com.rktirtho.hawkeye.adapter.EmployeesAdapter;
+import com.rktirtho.hawkeye.client.RetrofitClient;
 import com.rktirtho.hawkeye.model.About;
+import com.rktirtho.hawkeye.model.Employees;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AuthorizedFragment extends Fragment {
 
@@ -33,11 +40,29 @@ public class AuthorizedFragment extends Fragment {
         homeViewModel =
                 new ViewModelProvider(this).get(AuthorizedViewModel.class);
         View root = inflater.inflate(R.layout.fragment_authorized, container, false);
-        final TextView textView = root.findViewById(R.id.text_slideshow);
+        final ListView listView = root.findViewById(R.id.list_view);
         homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(s);
+                Call<List<Employees>> call = RetrofitClient.getInstance()
+                        .getMonitoringService()
+                        .getAuthorizedAccess();
+                call.enqueue(new Callback<List<Employees>>() {
+                    @Override
+                    public void onResponse(Call<List<Employees>> call, Response<List<Employees>> response) {
+                        if (response.isSuccessful()){
+                            List<Employees> employees = response.body();
+                            EmployeesAdapter adapter = new EmployeesAdapter(getContext(), R.layout.model_employee, employees);
+                            listView.setAdapter(adapter);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<Employees>> call, Throwable t) {
+
+                    }
+                });
+//                textView.setText(s);
 
             }
         });

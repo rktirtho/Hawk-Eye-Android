@@ -47,7 +47,7 @@
         android:name="com.rktirtho.hawkeye.ui.authorized.AuthorizedFragment"
         android:label="@string/menu_auth"
         tools:layout="@layout/fragment_authorized" />
-<fragment
+    <fragment
         android:id="@+id/nav_unauth_access"
         android:name="com.rktirtho.hawkeye.ui.unauthorized.UnauthorizedFragment"
         android:label="@string/menu_unAuth"
