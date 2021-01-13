@@ -10,7 +10,7 @@ public class AuthorizedViewModel extends ViewModel {
 
     public AuthorizedViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is About fragment");
+        mText.setValue("This is Authorized fragment");
     }
 
     public LiveData<String> getText() {

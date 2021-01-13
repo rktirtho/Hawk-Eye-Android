@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,30 +29,14 @@ public class YesterdayFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        List<About> abouts = new ArrayList<>();
-
-        About tirtho = new About("Rejaul Karim", "Code and System Analyst","41", "CS-E-16-105405");
-        About sima = new About("Sima Akter", "Book Writing and Data Analyst","07", "CS-E-16-105405");
-        About siam = new About("Shaeed Al Hasan", "UI Design and Database Administator","40", "CS-E-16-105405");
-        About shuvo = new About("Abdullah Al Shuvo", "Security and Testing","32", "CS-E-16-105405");
-        About supervisor = new About("Md. Rafid Mustafiz", "Supervisor","Lecturer", "Dhaka International University");
-
-        abouts.add(supervisor);
-        abouts.add(tirtho);
-        abouts.add(siam);
-        abouts.add(sima);
-        abouts.add(shuvo);
-
-
         homeViewModel =
                 new ViewModelProvider(this).get(YesterdayViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_about, container, false);
-        final ListView textView = root.findViewById(R.id.about_list);
+        View root = inflater.inflate(R.layout.fragment_yesterday, container, false);
+        final TextView textView = root.findViewById(R.id.text_slideshow);
         homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                AboutAdapter adapter = new AboutAdapter(getContext(), R.layout.model_about, abouts);
-                textView.setAdapter(adapter);
+                textView.setText(s);
 
             }
         });
