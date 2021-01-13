@@ -3,6 +3,8 @@ package com.rktirtho.hawkeye.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.sql.Timestamp;
+
 public class MonitoringView {
 
     @SerializedName("id")
@@ -16,7 +18,7 @@ public class MonitoringView {
     private String area;
     @SerializedName("time")
     @Expose
-    private String time;
+    private Timestamp time;
     @SerializedName("permitted")
     @Expose
     private Boolean permitted;
@@ -45,11 +47,11 @@ public class MonitoringView {
         this.area = area;
     }
 
-    public String getTime() {
+    public Timestamp getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Timestamp time) {
         this.time = time;
     }
 

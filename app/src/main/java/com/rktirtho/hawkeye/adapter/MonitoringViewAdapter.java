@@ -56,14 +56,18 @@ public class MonitoringViewAdapter extends ArrayAdapter<MonitoringView> {
         MonitoringView monitor = monitors.get(position);
 
         area.setText(monitor.getArea());
-        time.setText(monitor.getTime());
+        time.setText(
+                "Time: "+monitor.getTime().getHours()+" : "+monitor.getTime().getMinutes()+" : "+monitor.getTime().getSeconds()+"  Date: "+
+                monitor.getTime().getDate()+" - "+monitor.getTime().getMonth()+" - "+(1900+monitor.getTime().getYear())
 
-        if (monitor.getPermitted()){
-            access.setText("Legal");
-        }else {
-            access.setText("Illegal");
-            layout.setBackgroundColor(Color.rgb(255,0,0));
-        }
+        );
+
+//        if (monitor.getPermitted()){
+            access.setText("Legal "+ monitor.getPermitted());
+//        }else {
+//            access.setText("Illegal");
+//            layout.setBackgroundColor(Color.rgb(255,0,0));
+//        }
 
         return view;
     }
