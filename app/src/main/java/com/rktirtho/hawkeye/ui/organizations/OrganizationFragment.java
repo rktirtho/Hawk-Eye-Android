@@ -1,5 +1,6 @@
 package com.rktirtho.hawkeye.ui.organizations;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,6 +35,8 @@ public class OrganizationFragment extends Fragment {
 
     private OrganizationViewModel galleryViewModel;
 
+    private ProgressDialog progressDoalog;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         galleryViewModel =
@@ -43,6 +46,12 @@ public class OrganizationFragment extends Fragment {
         galleryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
+                progressDoalog = new ProgressDialog(getContext());
+                progressDoalog.setMax(100);
+                progressDoalog.setMessage("Fatching Data....");
+                progressDoalog.setTitle("Please Wait");
+                progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progressDoalog.show();
                 Call<List<Organization>> call = RetrofitClient.getInstance()
                         .getOrganizatonService()
                         .getAll();
@@ -54,6 +63,7 @@ public class OrganizationFragment extends Fragment {
                             List<Organization> organizations = response.body();
                             OrganizationAdapter adapter = new OrganizationAdapter(getContext(),R.layout.model_organization,organizations);
                             textView.setAdapter(adapter);
+                            progressDoalog.dismiss();
 
                             textView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                 @Override
@@ -67,6 +77,7 @@ public class OrganizationFragment extends Fragment {
 
 
                         } else {
+                            progressDoalog.dismiss();
                             Toast.makeText(getContext(), "Response Code " + response.code(), Toast.LENGTH_SHORT).show();
                         }
 

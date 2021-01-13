@@ -1,5 +1,6 @@
 package com.rktirtho.hawkeye.ui.unknowperson;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.rktirtho.hawkeye.R;
 public class UnknownPersonFragment extends Fragment {
 
     private GalleryViewModel galleryViewModel;
+    private ProgressDialog progressDoalog;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -27,7 +29,14 @@ public class UnknownPersonFragment extends Fragment {
         galleryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
+                progressDoalog = new ProgressDialog(getContext());
+                progressDoalog.setMax(100);
+                progressDoalog.setMessage("Fatching Data....");
+                progressDoalog.setTitle("Please Wait");
+                progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progressDoalog.show();
                 textView.setText(s);
+                progressDoalog.dismiss();
             }
         });
         return root;

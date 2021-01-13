@@ -1,5 +1,6 @@
 package com.rktirtho.hawkeye.ui.today;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +32,8 @@ public class TodayFragment extends Fragment {
 
     private TodayViewModel homeViewModel;
 
+    private ProgressDialog progressDoalog;
+
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -44,6 +47,12 @@ public class TodayFragment extends Fragment {
         homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
+                progressDoalog = new ProgressDialog(getContext());
+                progressDoalog.setMax(100);
+                progressDoalog.setMessage("Fatching Data....");
+                progressDoalog.setTitle("Please Wait");
+                progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progressDoalog.show();
                 Call<List<Employees>> call = RetrofitClient.getInstance()
                         .getMonitoringService()
                         .getToday();
@@ -56,11 +65,12 @@ public class TodayFragment extends Fragment {
                             EmployeesAdapter adapter = new EmployeesAdapter(getContext(), R.layout.model_employee, employees);
                             listView.setAdapter(adapter);
                         }
+                        progressDoalog.dismiss();
                     }
 
                     @Override
                     public void onFailure(Call<List<Employees>> call, Throwable t) {
-
+                        progressDoalog.dismiss();
                     }
                 });
 

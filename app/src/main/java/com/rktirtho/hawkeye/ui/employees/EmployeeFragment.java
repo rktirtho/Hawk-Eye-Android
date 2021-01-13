@@ -1,5 +1,6 @@
 package com.rktirtho.hawkeye.ui.employees;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,7 @@ import retrofit2.Response;
 public class EmployeeFragment extends Fragment {
 
     private EmployeeViewModel slideshowViewModel;
+    private ProgressDialog progressDoalog;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -36,6 +38,12 @@ public class EmployeeFragment extends Fragment {
         slideshowViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
+                progressDoalog = new ProgressDialog(getContext());
+                progressDoalog.setMax(100);
+                progressDoalog.setMessage("Fatching Data....");
+                progressDoalog.setTitle("Please Wait");
+                progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progressDoalog.show();
 
                 Call<List<Employees>> call = RetrofitClient
                         .getInstance()
@@ -49,11 +57,12 @@ public class EmployeeFragment extends Fragment {
 
                         EmployeesAdapter adapter = new EmployeesAdapter(getContext(), R.layout.model_employee, employees);
                         textView.setAdapter(adapter);
+                        progressDoalog.dismiss();
                     }
 
                     @Override
                     public void onFailure(Call<List<Employees>> call, Throwable t) {
-
+                        progressDoalog.dismiss();
                     }
                 });
 
