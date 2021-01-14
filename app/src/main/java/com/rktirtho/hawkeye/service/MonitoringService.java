@@ -38,7 +38,7 @@ public interface MonitoringService {
    @GET("api/monitoring/person/access/yesterday/{id}")
     Call<List<MonitoringView>> findYesterdayAccessById(@Path("id") int id);
 
-   @GET("api/monitoring/person/access/person/{id}")
+   @GET("api/monitoring/access/person/{id}")
     Call<List<MonitoringView>> findAccessByPersonId(@Path("id") int id);
 
 

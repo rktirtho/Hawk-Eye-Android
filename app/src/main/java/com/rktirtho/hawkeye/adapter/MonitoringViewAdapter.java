@@ -64,6 +64,7 @@ public class MonitoringViewAdapter extends ArrayAdapter<MonitoringView> {
 
         if (monitor.getPermitted()){
             access.setText("Legal ");
+            layout.setBackgroundColor(Color.rgb(0,255,0));
         }else {
             access.setText("Illegal");
             layout.setBackgroundColor(Color.rgb(255,0,0));

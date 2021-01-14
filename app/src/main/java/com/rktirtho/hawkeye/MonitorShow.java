@@ -58,7 +58,7 @@ public class MonitorShow extends AppCompatActivity {
             call = RetrofitClient.getInstance()
                     .getMonitoringService()
                     .findUnauthaccessById(personId);
-            getActionBar().setTitle("Authorized Access");
+            this.setTitle("Authorized Access");
         }else if (back.equals("yesterday")){
             call = RetrofitClient.getInstance()
                     .getMonitoringService()
@@ -81,10 +81,11 @@ public class MonitorShow extends AppCompatActivity {
                     .getMonitoringService()
                     .getAccessView(personId);
 
-        }else if (back.equals("")){
+        }else if (back.equals("employees")){
             call = RetrofitClient.getInstance()
                     .getMonitoringService()
-                    .getAccessView(personId);
+                    .findAccessByPersonId(personId);
+            this.setTitle(name);
         }
 
         call.enqueue(new Callback<List<MonitoringView>>() {
