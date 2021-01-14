@@ -75,6 +75,10 @@ public class AuthorizedFragment extends Fragment {
                                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                     Intent intent = new Intent(getContext(), MonitorShow.class);
                                     intent.putExtra("personId", employees.get(position).getId());
+                                    intent.putExtra("name", employees.get(position).getName());
+                                    intent.putExtra("orgName", employees.get(position).getOrgName());
+                                    intent.putExtra("image", employees.get(position).getImageId());
+                                    intent.putExtra("back", "authorized");
                                     startActivity(intent);
                                 }
                             });

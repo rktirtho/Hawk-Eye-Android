@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.rktirtho.hawkeye.adapter.MonitoringViewAdapter;
 import com.rktirtho.hawkeye.client.RetrofitClient;
@@ -19,6 +20,8 @@ import retrofit2.Response;
 
 public class MonitorShow extends AppCompatActivity {
     ListView accessList;
+    private TextView tvName;
+    private TextView tvOrg;
     private ProgressDialog progressDoalog;
     private List<MonitoringView> monitoringViewList;
 
@@ -35,10 +38,54 @@ public class MonitorShow extends AppCompatActivity {
         progressDoalog.show();
 
         int personId = getIntent().getIntExtra("personId",0);
+        String name = getIntent().getStringExtra("name");
+        String orgName = getIntent().getStringExtra("orgName");
+        String image = getIntent().getStringExtra("image");
+        String back = getIntent().getStringExtra("back");
+        Call<List<MonitoringView>> call = null;
 
-        Call<List<MonitoringView>> call = RetrofitClient.getInstance()
-                .getMonitoringService()
-                .getAccessView(personId);
+        tvName.setText(name);
+        tvOrg.setText(orgName);
+
+
+        if (back.equals("authorized")) {
+            call = RetrofitClient.getInstance()
+                    .getMonitoringService()
+                    .getAccessView(personId);
+            this.setTitle("Authorized Access");
+//            getSupportActionBar().setTitle("Authorized");
+        }else if (back.equals("unauthorized")){
+            call = RetrofitClient.getInstance()
+                    .getMonitoringService()
+                    .findUnauthaccessById(personId);
+            getActionBar().setTitle("Authorized Access");
+        }else if (back.equals("yesterday")){
+            call = RetrofitClient.getInstance()
+                    .getMonitoringService()
+                    .findYesterdayAccessById(personId);
+
+            this.setTitle("Yesterday Access");
+        }else if (back.equals("today")){
+            call = RetrofitClient.getInstance()
+                    .getMonitoringService()
+                    .findTodayAccessById(personId);
+            this.setTitle("Today Access");
+
+        }else if (back.equals("legal")){
+            call = RetrofitClient.getInstance()
+                    .getMonitoringService()
+                    .getAccessView(personId);
+
+        }else if (back.equals("")){
+            call = RetrofitClient.getInstance()
+                    .getMonitoringService()
+                    .getAccessView(personId);
+
+        }else if (back.equals("")){
+            call = RetrofitClient.getInstance()
+                    .getMonitoringService()
+                    .getAccessView(personId);
+        }
 
         call.enqueue(new Callback<List<MonitoringView>>() {
             @Override
@@ -63,6 +110,8 @@ public class MonitorShow extends AppCompatActivity {
 
     private void init(){
         accessList = findViewById(R.id.access_list);
+        tvName = findViewById(R.id.tv_name);
+        tvOrg = findViewById(R.id.tv_org);
 
     }
 }

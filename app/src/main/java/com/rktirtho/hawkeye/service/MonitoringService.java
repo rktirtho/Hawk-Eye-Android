@@ -29,6 +29,18 @@ public interface MonitoringService {
     @GET("api/monitoring/person/access/auth/{id}")
     Call<List<MonitoringView>> getAccessView(@Path("id") int id);
 
+   @GET("api/monitoring/person/access/unauth/{id}")
+    Call<List<MonitoringView>> findUnauthaccessById(@Path("id") int id);
+
+   @GET("api/monitoring/person/access/today/{id}")
+    Call<List<MonitoringView>> findTodayAccessById(@Path("id") int id);
+
+   @GET("api/monitoring/person/access/yesterday/{id}")
+    Call<List<MonitoringView>> findYesterdayAccessById(@Path("id") int id);
+
+   @GET("api/monitoring/person/access/person/{id}")
+    Call<List<MonitoringView>> findAccessByPersonId(@Path("id") int id);
+
 
 
 

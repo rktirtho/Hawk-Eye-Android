@@ -62,12 +62,12 @@ public class MonitoringViewAdapter extends ArrayAdapter<MonitoringView> {
 
         );
 
-//        if (monitor.getPermitted()){
-            access.setText("Legal "+ monitor.getPermitted());
-//        }else {
-//            access.setText("Illegal");
-//            layout.setBackgroundColor(Color.rgb(255,0,0));
-//        }
+        if (monitor.getPermitted()){
+            access.setText("Legal ");
+        }else {
+            access.setText("Illegal");
+            layout.setBackgroundColor(Color.rgb(255,0,0));
+        }
 
         return view;
     }
