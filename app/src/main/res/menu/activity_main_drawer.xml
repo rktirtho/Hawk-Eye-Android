@@ -30,7 +30,7 @@
         <menu>
             <item
                 android:id="@+id/nav_today"
-                android:icon="@drawable/ic_strainger_24"
+                android:icon="@drawable/ic_baseline_access_time_24"
                 android:title="@string/menu_today" />
             <item
                 android:id="@+id/nav_yesterday"

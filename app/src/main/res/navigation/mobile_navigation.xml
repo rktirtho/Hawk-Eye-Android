@@ -52,5 +52,10 @@
         android:name="com.rktirtho.hawkeye.ui.unauthorized.UnauthorizedFragment"
         android:label="@string/menu_unAuth"
         tools:layout="@layout/fragment_unauthorized" />
+    <fragment
+        android:id="@+id/nav_unknown_access"
+        android:name="com.rktirtho.hawkeye.ui.stringeraccess.StringerAccessFragment"
+        android:label="@string/menu_unknown_access"
+        tools:layout="@layout/fragment_stringer_access" />
 
 </navigation>

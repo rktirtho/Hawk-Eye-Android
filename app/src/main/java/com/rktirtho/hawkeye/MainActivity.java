@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 ,R.id.nav_auth_access
                 ,R.id.nav_unauth_access
                 ,R.id.nav_all_access
+                ,R.id.nav_unknown_access
         )
                 .setDrawerLayout(drawer)
                 .build();

@@ -38,7 +38,7 @@ public class StringerAccessFragment extends Fragment {
 
         homeViewModel =
                 new ViewModelProvider(this).get(StringerAccessViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_yesterday, container, false);
+        View root = inflater.inflate(R.layout.fragment_stringer_access, container, false);
         final ListView listView = root.findViewById(R.id.list);
         homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override

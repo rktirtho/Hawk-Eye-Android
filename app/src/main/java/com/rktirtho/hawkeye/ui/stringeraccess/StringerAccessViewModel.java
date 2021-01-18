@@ -10,7 +10,7 @@ public class StringerAccessViewModel extends ViewModel {
 
     public StringerAccessViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is Yesterday fragment");
+        mText.setValue("This is stringer access fragment");
     }
 
     public LiveData<String> getText() {
