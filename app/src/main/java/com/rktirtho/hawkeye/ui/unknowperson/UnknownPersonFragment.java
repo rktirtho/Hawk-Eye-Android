@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,7 +26,7 @@ public class UnknownPersonFragment extends Fragment {
         galleryViewModel =
                 new ViewModelProvider(this).get(GalleryViewModel.class);
         View root = inflater.inflate(R.layout.fragment_unknow_person, container, false);
-        final TextView textView = root.findViewById(R.id.text_gallery);
+        final ListView lvStranger = root.findViewById(R.id.lv_stranger);
         galleryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -35,8 +36,10 @@ public class UnknownPersonFragment extends Fragment {
                 progressDoalog.setTitle("Please Wait");
                 progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                 progressDoalog.show();
-                textView.setText(s);
                 progressDoalog.dismiss();
+
+
+
             }
         });
         return root;

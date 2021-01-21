@@ -3,6 +3,7 @@ package com.rktirtho.hawkeye.client;
 import com.rktirtho.hawkeye.service.EmployeeService;
 import com.rktirtho.hawkeye.service.MonitoringService;
 import com.rktirtho.hawkeye.service.OrganizationService;
+import com.rktirtho.hawkeye.service.StrangerService;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -41,6 +42,10 @@ public class RetrofitClient {
 
     public MonitoringService getMonitoringService() {
         return retrofit.create(MonitoringService.class);
+    }
+
+    public StrangerService getStrangerService() {
+        return retrofit.create(StrangerService.class);
     }
 }
 
