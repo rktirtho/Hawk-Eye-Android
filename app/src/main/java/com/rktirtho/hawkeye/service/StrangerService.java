@@ -9,6 +9,6 @@ import retrofit2.http.GET;
 
 public interface StrangerService {
 
-    @GET
+    @GET("api/stranger/all")
     Call<List<Stranger>> getAll();
 }
