@@ -14,6 +14,9 @@ public interface StrangerService {
     @GET("api/stranger/all")
     Call<List<Stranger>> getAll();
 
-    @GET("api/stranger/access/{id}")
+    @GET("api/monitoring/stranger/{id}")
     Call<List<MonitoringView>> getAccessById(@Path("id") int id);
+
+    @GET("api/monitoring/strangers")
+    Call<List<Stranger>> getAccessedStranger();
 }
