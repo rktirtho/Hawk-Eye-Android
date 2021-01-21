@@ -69,7 +69,7 @@ public class UnknownPersonFragment extends Fragment {
                                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                     Intent intent= new Intent(getContext(), StrangerMotitorShow.class);
                                     intent.putExtra("stId", strangers.get(position).getId());
-                                    intent.putExtra("stImage", strangers.get(position).getId());
+                                    intent.putExtra("stImage", strangers.get(position).getImage());
                                     startActivity(intent);
                                 }
                             });
