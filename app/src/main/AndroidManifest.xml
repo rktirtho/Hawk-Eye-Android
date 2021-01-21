@@ -12,7 +12,8 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.HawkEye">
-        <activity android:name=".MonitorShow"></activity>
+        <activity android:name=".StrangerMotitorShow"></activity>
+        <activity android:name=".MonitorShow" />
         <activity android:name=".OrganizationEmployee" />
         <activity
             android:name=".Login"

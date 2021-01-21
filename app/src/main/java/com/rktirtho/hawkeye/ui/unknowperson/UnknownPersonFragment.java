@@ -1,10 +1,12 @@
 package com.rktirtho.hawkeye.ui.unknowperson;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -15,6 +17,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.rktirtho.hawkeye.R;
+import com.rktirtho.hawkeye.StrangerMotitorShow;
 import com.rktirtho.hawkeye.adapter.StrangerAdapter;
 import com.rktirtho.hawkeye.client.RetrofitClient;
 import com.rktirtho.hawkeye.model.Stranger;
@@ -45,7 +48,7 @@ public class UnknownPersonFragment extends Fragment {
                 progressDoalog.setTitle("Please Wait");
                 progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                 progressDoalog.show();
-                progressDoalog.dismiss();
+
 
                 Call<List<Stranger>> call = RetrofitClient
                         .getInstance()
@@ -60,12 +63,24 @@ public class UnknownPersonFragment extends Fragment {
 
                             StrangerAdapter adapter = new StrangerAdapter(getContext(), R.layout.model_stranger, strangers );
                             lvStranger.setAdapter(adapter);
+
+                            lvStranger.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                    Intent intent= new Intent(getContext(), StrangerMotitorShow.class);
+                                    intent.putExtra("stId", strangers.get(position).getId());
+                                    intent.putExtra("stImage", strangers.get(position).getId());
+                                    startActivity(intent);
+                                }
+                            });
+
                         }
+                        progressDoalog.dismiss();
                     }
 
                     @Override
                     public void onFailure(Call<List<Stranger>> call, Throwable t) {
-
+                        progressDoalog.dismiss();
                     }
                 });
 
