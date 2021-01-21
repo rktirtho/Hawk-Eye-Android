@@ -15,6 +15,11 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.rktirtho.hawkeye.R;
+import com.rktirtho.hawkeye.client.RetrofitClient;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class UnknownPersonFragment extends Fragment {
 
@@ -37,6 +42,23 @@ public class UnknownPersonFragment extends Fragment {
                 progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                 progressDoalog.show();
                 progressDoalog.dismiss();
+
+                Call call = RetrofitClient
+                        .getInstance()
+                        .getStrangerService()
+                        .getAll();
+
+                call.enqueue(new Callback() {
+                    @Override
+                    public void onResponse(Call call, Response response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call call, Throwable t) {
+
+                    }
+                });
 
 
 

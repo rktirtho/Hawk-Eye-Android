@@ -1,7 +1,10 @@
 package com.rktirtho.hawkeye.model;
 
+import android.os.health.TimerStat;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import java.sql.Timestamp;
 
 public class Stranger {
     @SerializedName("id")
@@ -12,7 +15,7 @@ public class Stranger {
     private String image;
     @SerializedName("time")
     @Expose
-    private String time;
+    private Timestamp time;
     @SerializedName("visited")
     @Expose
     private Integer visited;
@@ -33,11 +36,11 @@ public class Stranger {
         this.image = image;
     }
 
-    public String getTime() {
+    public Timestamp getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Timestamp time) {
         this.time = time;
     }
 
