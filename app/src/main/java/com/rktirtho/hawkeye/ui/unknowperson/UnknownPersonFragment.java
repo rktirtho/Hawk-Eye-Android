@@ -15,7 +15,11 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.rktirtho.hawkeye.R;
+import com.rktirtho.hawkeye.adapter.StrangerAdapter;
 import com.rktirtho.hawkeye.client.RetrofitClient;
+import com.rktirtho.hawkeye.model.Stranger;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -43,19 +47,24 @@ public class UnknownPersonFragment extends Fragment {
                 progressDoalog.show();
                 progressDoalog.dismiss();
 
-                Call call = RetrofitClient
+                Call<List<Stranger>> call = RetrofitClient
                         .getInstance()
                         .getStrangerService()
                         .getAll();
 
-                call.enqueue(new Callback() {
+                call.enqueue(new Callback<List<Stranger>>() {
                     @Override
-                    public void onResponse(Call call, Response response) {
+                    public void onResponse(Call<List<Stranger>> call, Response<List<Stranger>> response) {
+                        if (response.isSuccessful()){
+                            List<Stranger>  strangers = response.body();
 
+                            StrangerAdapter adapter = new StrangerAdapter(getContext(), R.layout.model_stranger, strangers );
+                            lvStranger.setAdapter(adapter);
+                        }
                     }
 
                     @Override
-                    public void onFailure(Call call, Throwable t) {
+                    public void onFailure(Call<List<Stranger>> call, Throwable t) {
 
                     }
                 });
