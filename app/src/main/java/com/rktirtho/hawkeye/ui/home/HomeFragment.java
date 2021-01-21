@@ -14,6 +14,11 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.rktirtho.hawkeye.R;
+import com.rktirtho.hawkeye.client.RetrofitClient;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
 
@@ -26,6 +31,19 @@ public class HomeFragment extends Fragment {
                 new ViewModelProvider(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         final TextView textView = root.findViewById(R.id.text_home);
+        final TextView tv_total_emp = root.findViewById(R.id.tv_total_emp);
+        final TextView tv_current_emp = root.findViewById(R.id.tv_current_emp);
+        final TextView tv_total_visitor = root.findViewById(R.id.tv_total_visitor);
+        final TextView tv_current_visitor = root.findViewById(R.id.tv_current_visitor);
+        final TextView tv_num_org = root.findViewById(R.id.tv_num_org);
+//        final TextView textView = root.findViewById(R.id.text_home);
+//        final TextView textView = root.findViewById(R.id.text_home);
+//        final TextView textView = root.findViewById(R.id.text_home);
+//        final TextView textView = root.findViewById(R.id.text_home);
+//        final TextView textView = root.findViewById(R.id.text_home);
+//        final TextView textView = root.findViewById(R.id.text_home);
+
+
         homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -37,6 +55,60 @@ public class HomeFragment extends Fragment {
                 progressDoalog.show();
                 textView.setText(s);
                 progressDoalog.dismiss();
+
+                Call<Long> orgCall = RetrofitClient
+                        .getInstance()
+                        .getOrganizatonService()
+                        .count();
+
+                orgCall.enqueue(new Callback<Long>() {
+                    @Override
+                    public void onResponse(Call<Long> call, Response<Long> response) {
+                        tv_num_org.setText(""+response.body());
+                    }
+
+                    @Override
+                    public void onFailure(Call<Long> call, Throwable t) {
+
+                    }
+                });
+
+                Call<Long> employeeCall = RetrofitClient
+                        .getInstance()
+                        .getEmployeeService()
+                        .count();
+                employeeCall.enqueue(new Callback<Long>() {
+                    @Override
+                    public void onResponse(Call<Long> call, Response<Long> response) {
+                        if (response.isSuccessful()){
+                            tv_total_emp.setText(""+response.body());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Long> call, Throwable t) {
+
+                    }
+                });
+
+                Call<Long> strangerCall = RetrofitClient
+                        .getInstance()
+                        .getStrangerService()
+                        .count();
+
+                strangerCall.enqueue(new Callback<Long>() {
+                    @Override
+                    public void onResponse(Call<Long> call, Response<Long> response) {
+                        if (response.isSuccessful()){
+                            tv_total_visitor.setText(""+response.body());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Long> call, Throwable t) {
+
+                    }
+                });
             }
         });
         return root;

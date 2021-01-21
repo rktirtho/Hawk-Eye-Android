@@ -13,5 +13,8 @@ public interface OrganizationService {
     @GET("api/organizations")
     Call<List<Organization>> getAll();
 
+    @GET("api/organization/count")
+    Call<Long> count();
+
 
 }

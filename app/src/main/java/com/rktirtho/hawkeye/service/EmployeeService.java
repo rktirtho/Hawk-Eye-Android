@@ -15,4 +15,7 @@ public interface EmployeeService {
 
     @GET("api/permitteds/org/{id}")
     Call<List<Employees>> getAllByorgId(@Path("id") int id);
+
+    @GET("api/permitted/count")
+    Call<Long> count();
 }

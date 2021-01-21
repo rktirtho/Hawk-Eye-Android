@@ -27,7 +27,7 @@
         android:paddingVertical="@dimen/half_margin"/>
 
     <ListView
-        android:id="@+id/st_list"
+        android:id="@+id/lv_stranger_access"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

@@ -32,12 +32,12 @@ public class StrangerMotitorShow extends AppCompatActivity {
         int stId = getIntent().getIntExtra("stId",0);
         String stImage = getIntent().getStringExtra("stImage");
 
-        Glide.with(this)
-                .load(RetrofitClient.BASE_URL+"images/"+stImage+".jpg")
-                .placeholder(R.drawable.logo)
-                .error(R.drawable.logo)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(ivImage);
+//        Glide.with(this)
+//                .load(RetrofitClient.BASE_URL+"images/"+stImage+".jpg")
+//                .placeholder(R.drawable.logo)
+//                .error(R.drawable.logo)
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .into(ivImage);
 
         tvStName.setText(stImage);
 
@@ -70,7 +70,7 @@ public class StrangerMotitorShow extends AppCompatActivity {
 
         ivImage = findViewById(R.id.iv_image);
         tvStName = findViewById(R.id.tv_st_name);
-        lvStng = findViewById(R.id.lv_stranger);
+        lvStng = findViewById(R.id.lv_stranger_access);
 
     }
 }

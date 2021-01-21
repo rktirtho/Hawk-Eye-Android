@@ -19,4 +19,7 @@ public interface StrangerService {
 
     @GET("api/monitoring/strangers")
     Call<List<Stranger>> getAccessedStranger();
+
+    @GET("api/stranger/count")
+    Call<Long> count();
 }
