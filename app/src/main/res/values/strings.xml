@@ -14,7 +14,7 @@
     <string name="menu_about">About Us</string>
     <string name="menu_auth">Authorized Access</string>
     <string name="menu_unAuth">Unauthorized Access</string>
-    <string name="menu_unknown_access">Stringer Access</string>
+    <string name="menu_unknown_access">Stranger Access</string>
     <string name="menu_today">Today</string>
     <string name="menu_yesterday">Yesterday</string>
 </resources>
