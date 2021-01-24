@@ -109,6 +109,39 @@ public class HomeFragment extends Fragment {
 
                     }
                 });
+
+                Call<Long> todayEmployeeCall = RetrofitClient
+                        .getInstance()
+                        .getMonitoringService()
+                        .countTodayEmployee();
+
+                todayEmployeeCall.enqueue(new Callback<Long>() {
+                    @Override
+                    public void onResponse(Call<Long> call, Response<Long> response) {
+                        tv_current_emp.setText(""+response.body());
+                    }
+
+                    @Override
+                    public void onFailure(Call<Long> call, Throwable t) {
+
+                    }
+                });
+
+                Call<Long> todayVisitorsCall = RetrofitClient
+                        .getInstance()
+                        .getStrangerService()
+                        .countTodayVisitors();
+                todayVisitorsCall.enqueue(new Callback<Long>() {
+                    @Override
+                    public void onResponse(Call<Long> call, Response<Long> response) {
+                        tv_current_visitor.setText(""+response.body());
+                    }
+
+                    @Override
+                    public void onFailure(Call<Long> call, Throwable t) {
+
+                    }
+                });
             }
         });
         return root;

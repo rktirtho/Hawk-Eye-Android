@@ -41,7 +41,8 @@ public interface MonitoringService {
    @GET("api/monitoring/access/person/{id}")
     Call<List<MonitoringView>> findAccessByPersonId(@Path("id") int id);
 
-
+    @GET("api/monitoring/stranger/today")
+    Call<Long> countTodayEmployee();
 
 
 

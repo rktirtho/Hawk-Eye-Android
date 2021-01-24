@@ -22,4 +22,7 @@ public interface StrangerService {
 
     @GET("api/stranger/count")
     Call<Long> count();
+
+    @GET("api/monitoring/stranger/today")
+    Call<Long> countTodayVisitors();
 }
