@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.rktirtho.hawkeye.R;
+import com.rktirtho.hawkeye.client.RetrofitClient;
 import com.rktirtho.hawkeye.model.About;
 import com.rktirtho.hawkeye.model.Stranger;
 
@@ -57,12 +58,10 @@ public class StrangerAdapter extends ArrayAdapter<Stranger> {
 
         Stranger stranger = strangers.get(position);
 
-
-
         Glide.with(context)
-                .load("faculaty.getImage()")
-                .placeholder(R.drawable.ic_strainger_24)
-                .error(R.drawable.ic_strainger_24)
+                .load(RetrofitClient.BASE_URL+"images/"+stranger.getImage()+".jpg")
+                .placeholder(R.drawable.logo)
+                .error(R.drawable.logo)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(imageView);
 
