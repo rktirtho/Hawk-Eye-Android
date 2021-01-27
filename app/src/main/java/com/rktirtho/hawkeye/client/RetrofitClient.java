@@ -3,6 +3,7 @@ package com.rktirtho.hawkeye.client;
 import com.rktirtho.hawkeye.service.EmployeeService;
 import com.rktirtho.hawkeye.service.MonitoringService;
 import com.rktirtho.hawkeye.service.OrganizationService;
+import com.rktirtho.hawkeye.service.SecurityService;
 import com.rktirtho.hawkeye.service.StrangerService;
 
 import retrofit2.Retrofit;
@@ -32,6 +33,10 @@ public class RetrofitClient {
     //    ================================== Organization Client======================
     public OrganizationService getOrganizatonService() {
         return retrofit.create(OrganizationService.class);
+    }
+
+    public SecurityService getSecurityService() {
+        return retrofit.create(SecurityService.class);
     }
 
 
